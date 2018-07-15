@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Run Lover
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <ion-list>
+    <ion-item *ngFor="let data of history" no-padding (click)="onItemClick(data)">
+	  <ion-grid no-padding> 
+	    <ion-row align-items-center>
+		  <ion-col style="font-size:140%; margin-left:12px">
+		    {{data.date | date:'dd/MM/yyyy'}}
+		  </ion-col>
+		  <ion-col col-auto style="text-align:right;">
+		    {{data.duration | date:'mm:ss:SSS'}}<br/>{{data.distance | number:'1.2-2'}} m
+		  </ion-col>
+		</ion-row>
+	  </ion-grid>
+	</ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer padding>
+  <button ion-button color="primary" full (click)="onTrackClick()">Track Run</button>
+</ion-footer>

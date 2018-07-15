@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Run Detail
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding no-bounce>
+  <div id="map_canvas" style="height:100%"></div>
+</ion-content>
+<ion-footer padding>
+  <ion-grid no-padding> 
+	<ion-row>
+	  <ion-col style="font-size:140%; font-weight:bold; line-height:130%">
+		Duration: {{duration | date:'mm:ss:SSS'}}<br/>Distance: {{distance | number:'1.2-2'}} m
+	  </ion-col>
+	  <ion-col col-auto style="margin-top:3px">
+		{{date | date:'dd/MM/yyyy'}}
+	  </ion-col>
+	</ion-row>
+  </ion-grid>
+</ion-footer>

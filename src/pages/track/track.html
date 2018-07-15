@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Track Run
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding no-bounce>
+  <div id="map_canvas" style="height:100%"></div>
+</ion-content>
+<ion-footer padding style="padding-top:8px">
+  <ion-grid no-padding> 
+	<ion-row style="font-size:180%; font-weight:bold; margin-bottom:8px">
+	  <ion-col>
+		{{duration | date:'mm:ss:SSS'}}
+	  </ion-col>
+	  <ion-col col-auto>
+		{{distance | number:'1.2-2'}} m
+	  </ion-col>
+	</ion-row>	
+    <div *ngIf="!isTrackingStarted; else trackStarted">
+      <button ion-button color="primary" full [disabled]="!isTrackingReady" (click)="onStartClick()">Start</button>
+    </div>
+    <ng-template #trackStarted>
+      <div *ngIf="!isTrackingFinished; else trackFinished">
+	    <button ion-button color="primary" full (click)="onStopClick()">Stop</button>
+	  </div>
+      <ng-template #trackFinished>
+	    <ion-row>	
+	      <ion-col style="margin-right:8px">
+            <button ion-button color="primary" full (click)="onSaveClick()">Save</button>
+	      </ion-col>
+	      <ion-col style="margin-left:8px">
+            <button ion-button color="primary" full (click)="onResetClick()">Reset</button>
+	      </ion-col>
+	    </ion-row>
+      </ng-template>
+    </ng-template>
+  </ion-grid>
+</ion-footer>
